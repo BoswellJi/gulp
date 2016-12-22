@@ -1,6 +1,7 @@
 ##gulp 工程构建系统
 
 - 注意点：
+
 1. package.json中不能将name字段写为已有的项目名称，否则下载不了这个npm包,如图：
 ![](./images/1.png)
 
