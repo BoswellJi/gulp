@@ -6,8 +6,14 @@
 ![](./images/1.png)
 
 2. 如果指定检测的文件没有变化，第一次编译是不会编译进去的
+3. es6语法只有编译好了，才能压缩 
 
-- 编译es7语法：
+
+
+
+# gulp功能点：
+
+- 编译es6/7语法：
 ```
 安装:
 npm i --save-dev babel-plugin-transform-decorators-legacy
@@ -16,3 +22,8 @@ gulp或者webpack中加：
 plugins:['transform-decorators-legacy']
 presets: ['es2015','stage-0']
 ```
+
+- 判断js语法错误
+> jshint是用来检测javascript的语法错误的
+
+

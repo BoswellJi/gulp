@@ -1,7 +1,14 @@
-function *ab(){
-    console.log('df');
+function ab(){
+    console.log('dfgfgf');
 }
 
 ab();
 
-console.log('df');
+let p=new Promise(function(){
+    
+},function(){
+
+});
+
+
+console.log('ddfdfdff');
