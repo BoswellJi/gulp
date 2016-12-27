@@ -23,7 +23,8 @@ plugins:['transform-decorators-legacy']
 presets: ['es2015','stage-0']
 ```
 
-- 判断js语法错误
+- 判断js语法错误 
+
 > jshint是用来检测javascript的语法错误的
 
 
