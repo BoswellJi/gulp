@@ -17,3 +17,10 @@
 
 - 注意点
 1. 不要在master,develop分支做开发工作
+
+
+
+#git 
+
+- 技巧
+1. 设置当前仓库的姓名，邮箱       git config user.name/user.email
