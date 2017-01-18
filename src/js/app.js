@@ -1,14 +1,16 @@
-function ab(){
-    console.log('dfgfgf');
-}
+ let jquery = require('jquery');
 
-ab();
+ function ab() {
+     console.log(jquery);
+ }
 
-let p=new Promise(function(){
-    
-},function(){
+ ab();
 
-});
+ let p = new Promise(function() {
+
+ }, function() {
+
+ });
 
 
-console.log('ddfdfdff');
+ console.log('fffdff');
