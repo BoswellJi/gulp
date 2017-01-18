@@ -13,6 +13,7 @@ var concat = require('gulp-concat');                //合并css文件介绍请�
 var uglify = require('gulp-uglify');            //压缩js文件
 var babel = require('gulp-babel');
 var browserSync = require('browser-sync').create();
+var webserver=require('gulp-webserver');
 
 // 编译less文件
 gulp.task('lessback', function () {
@@ -62,15 +63,27 @@ gulp.task('jsWatch', function () {
     gulp.watch('src/js/*.js', ['es67Task']); //当所有js文件发生改变时，调用es67Task任务
 });
 
+//对html文件进行的处理
+gulp.task('html', function() {
+     gulp.src("src/html/*.html")
+        .pipe(gulp.dest('lib'))
+        .pipe(livereload())
+        .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
+});
+// 对html文件进行检测，异动就执行html任务
+gulp.task('htmlWatch',function(){
+     livereload.listen();
+    gulp.watch('src/html/*.html',['html']);
+});
 
-// 静态服务器 + 监听 scss/html 文件
-// gulp.task('serve', function() {
 
-//     browserSync.init({
-//         server: "./src"
-//     });
+//Server
+gulp.task('server', function() {
+  gulp.src('lib')
+    .pipe(webserver({       //浏览器自动打开加上自动刷新
+      livereload: true,
+      open: true
+    }));
+});
 
-//     gulp.watch("src/*.html").on('change', browserSync.reload);
-// });
-
-gulp.task('default', ['testWatch', 'jsWatch']);
+gulp.task('default', ['testWatch', 'jsWatch','htmlWatch','server']);
