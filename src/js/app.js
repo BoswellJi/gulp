@@ -1,16 +1,6 @@
- let jquery = require('jquery');
+import $ from 'jquery';
+import first from './first.js'
 
- function ab() {
-     console.log(jquery);
- }
-
- ab();
-
- let p = new Promise(function() {
-
- }, function() {
-
- });
-
-
- console.log('fffdff');
+$.each([1,2],function(index,el){
+    console.log(index);
+});
