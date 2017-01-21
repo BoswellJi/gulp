@@ -1,26 +1,17 @@
-<<<<<<< HEAD
-var map = new BMap.Map("app"); // 创建地图实例  
-var point = new BMap.Point(116.404, 39.915); // 创建点坐标  
-map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
+// var map = new BMap.Map("app"); // 创建地图实例  
+// var point = new BMap.Point(116.404, 39.915); // 创建点坐标  
+// map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
 
-// 给地图添加右键菜单
-var contextMenu = new BMap.ContextMenu();
-contextMenu.addItem(new BMap.MenuItem('<h2>text: String</h2>', function() { alert('右键') }, { width: '200px', id: 'one', iconUrl: BMAP_CONTEXT_MENU_ICON_ZOOMIN }));
-map.addContextMenu(contextMenu);
+// // 给地图添加右键菜单
+// var contextMenu = new BMap.ContextMenu();
+// contextMenu.addItem(new BMap.MenuItem('<h2>text: String</h2>', function() { alert('右键') }, { width: '200px', id: 'one', iconUrl: BMAP_CONTEXT_MENU_ICON_ZOOMIN }));
+// map.addContextMenu(contextMenu);
 
-// 给地图添加覆盖物
-// var overlay = BMap.Overlay();
+// // 给地图添加覆盖物
+// // var overlay = BMap.Overlay();
 
-BMap.Overlay.show();
-map.addOverlay(new BMap.Marker((new BMap.Point(116.404, 39.915), {icon:}));
+// BMap.Overlay.show();
+// map.addOverlay(new BMap.Marker((new BMap.Point(116.404, 39.915), { icon: }));
 
-map.disableDragging()
-    // map.enableScrollWheelZoom()()
-=======
-import $ from 'jquery';
-import first from './first.js'
-
-$.each([1,2],function(index,el){
-    console.log(index);
-});
->>>>>>> 9168e6ab7987b183451e4e91a0b772820fd2300c
+//         map.disableDragging()
+//         // map.enableScrollWheelZoom()()

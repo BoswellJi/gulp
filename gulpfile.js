@@ -21,7 +21,7 @@ var react = require('gulp-react');
 gulp.task('jsx', function() {
     return gulp.src('src/jsx/*.jsx')
         .pipe(browserify()) //模块化
-        .pipe(babel({ presets: ['react']})) //对react进行编译
+        .pipe(babel({ presets: ['react'] })) //对react进行编译
         // .pipe(concat('all1.js'))
         .pipe(gulp.dest('lib/js'));
 });
@@ -97,7 +97,7 @@ gulp.task('htmlWatch', function() {
 
 //Server,开启一个本地服务器，打开浏览器，并根据文件 
 gulp.task('server', function() {
-    gulp.src('lib')
+    gulp.src('src')
         .pipe(webserver({ //浏览器自动打开加上自动刷新
             livereload: true,
             open: true
