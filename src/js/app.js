@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var map = new BMap.Map("app"); // 创建地图实例  
 var point = new BMap.Point(116.404, 39.915); // 创建点坐标  
 map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
@@ -15,3 +16,11 @@ map.addOverlay(new BMap.Marker((new BMap.Point(116.404, 39.915), {icon:}));
 
 map.disableDragging()
     // map.enableScrollWheelZoom()()
+=======
+import $ from 'jquery';
+import first from './first.js'
+
+$.each([1,2],function(index,el){
+    console.log(index);
+});
+>>>>>>> 9168e6ab7987b183451e4e91a0b772820fd2300c

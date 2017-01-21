@@ -21,8 +21,8 @@ var react = require('gulp-react');
 gulp.task('jsx', function() {
     return gulp.src('src/jsx/*.jsx')
         .pipe(browserify()) //模块化
-        .pipe(react({ presets: ['react', 'es2015'] })) //对react进行编译
-        .pipe(concat('all1.js'))
+        .pipe(babel({ presets: ['react']})) //对react进行编译
+        // .pipe(concat('all1.js'))
         .pipe(gulp.dest('lib/js'));
 });
 // 监听jsx文件
