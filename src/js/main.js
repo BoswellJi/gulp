@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var map=new Map('app',{maxZoom:1});
 
 // 百度地图API功能
@@ -122,3 +123,5 @@ function addMarker(lng,lat){
     });
     map.addOverlay(marker);
 }
+=======
+>>>>>>> c9881f5f182e3e4f58212140d7ed79fa074ad0e1
