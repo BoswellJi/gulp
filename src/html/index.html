@@ -3,18 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Document</title>
     <!--<link rel="stylesheet" href="../css/all.css" />-->
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>
+    <div id="container"></div>
     <div id="app"></div>
     <!--项目支持commonjs模块化-->
     <!--<script src="../js/all.js"></script>-->
-    <!--项目只是编译jsx文件-->
+    <!--项目只是编译jsxb文件-->
     <!--<script src="../js/all1.js"></script>-->
-    <script src="../js/lib/require.js" data-main="../js/main"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=Rqg1ypPGKq7PFCx8VO1ONye7AQEHQDqt" type="text/javascript"></script>
+    <!--地图的测距工具-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+    <!--城市列表示例-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/CityList/1.4/src/CityList_min.js"></script>
+    <script src="../js/main.js" ></script>
 </body>
 
 </html>
