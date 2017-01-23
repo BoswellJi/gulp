@@ -3,6 +3,7 @@
 2. 依赖注入
 - 自己定义参数（名称，数量，顺序）的函数
 - 比如：ng.controller('c1',function($scope,$http){});
+- 自己使用什么参数，就传什么参数；
 3. 完全接管UI
 4. 拓展了html的功能
 
@@ -21,9 +22,10 @@
 ##angular api
 1. var mod1=angular.module('param',[]);
  - param:ng-app，代表这个页面的某个模块；
-2. mod1.controller('param',function($scope){});
+2. mod1.controller('param',function($scope){ var a=0; $scope.a=0; });
  - param:这个controller的名称；
  - $scope:所有这个controller中需要的东西
+ - $scope:作用域，window.a=0; var a=0;
 3. controller的不同写法：
  - mod1.controller('c1',[$scope,$http,function(a,b){}])
 
@@ -66,3 +68,8 @@
                 responseType: 'json'
             }).success(function(res) {}).error(function(err) {});
 ```
+
+##事件
+- 在angular中事件相当于一个指令，都是以ng-开头；ng-click="fn()"
+- angular中的事件处理函数绑定在$scope上；
+- 传入事件处理函数的事件对象都是ev,处理函数的作用域指向$scope===this

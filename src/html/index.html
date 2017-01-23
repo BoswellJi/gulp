@@ -11,52 +11,9 @@
 </head>
 
 <body>
-    <!--<div ng-app="mod1">
-        <ul ng-controller="c1">
-            <li ng-repeat="(key,item) in arr">
-                值{{item}} 索引{{key}}
-            </li>
-        </ul>
-    </div>-->
 
-    <div ng-app="mod2">
-        <div ng-controller="c2">
-            <input type="button" value="单机" ng-click="alert(str)" />
-            <input type="text" name="" value="" ng-model="str" />
-            <span>{{str}}</span>
-        </div>
-    </div>
-    <!--<script src="http://api.map.baidu.com/api?v=2.0&ak=Rqg1ypPGKq7PFCx8VO1ONye7AQEHQDqt"></script>-->
-    <!--<script src="../js/lib/jquery.js"></script>-->
-    <!--<script src="../js/lib/bootstrap.js"></script>-->
     <script src="../js/lib/angular.js"></script>
     <script>
-        var mod1 = angular.module('mod1', []);
-
-        mod1.controller('c1', function($scope) {
-            $scope.arr = ['a', 'b', 'c'];
-        });
-
-        var mod2 = angular.module('mod2', []);
-        mod2.controller('c2', function($scope, $http) {
-            // get方式
-            // $http.get('../data/data.json', {
-            //     params: {
-            //         a: 'a'
-            //     }
-            // }).then(function(res) {
-            //     console.log(res)
-            // }, function(err) {
-            //     console.log(err);
-            // });
-
-            $http.get('../data/data.json', {
-                params: {
-                    a: 'a'
-                },
-                responseType: 'json'
-            }).success(function(res) {}).error(function(err) {});
-        });
     </script>
 </body>
 

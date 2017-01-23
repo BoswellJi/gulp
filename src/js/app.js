@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // var map = new BMap.Map("app"); // 创建地图实例  
 // var point = new BMap.Point(116.404, 39.915); // 创建点坐标  
 // map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
@@ -17,4 +15,3 @@
 
 //         map.disableDragging()
 //         // map.enableScrollWheelZoom()()
->>>>>>> c9881f5f182e3e4f58212140d7ed79fa074ad0e1
