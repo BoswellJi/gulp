@@ -25,6 +25,7 @@ gulp.task('jsx', function() {
         // .pipe(concat('all1.js'))
         .pipe(gulp.dest('lib/js'));
 });
+
 // 监听jsx文件
 gulp.task('jsxWatch', function() {
     livereload.listen(); //实时刷新
@@ -46,7 +47,7 @@ gulp.task('lessback', function() {
             //        transform: rotate(45deg);
             remove: true //是否去掉不必要的前缀 默认：true 
         }))
-        .pipe(concat('all.css')) //合并后的文件名
+        // .pipe(concat('all.css')) //合并后的文件名
         .pipe(gulp.dest('lib/css')) //输出
         .pipe(livereload()); //实时刷新
 });
@@ -57,9 +58,7 @@ gulp.task('testWatch', function() {
     gulp.watch('src/less/*.less', ['lessback']); //当所有less文件发生改变时，调用testLess任务
 });
 
-
 // 编译es6/7文件
-
 gulp.task('es67Task', function() {
     gulp.src('src/js/*.js')
         .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })) //提示
@@ -68,7 +67,7 @@ gulp.task('es67Task', function() {
             presets: ['es2015'] //对es6语法进行编译为es5
         }))
         .pipe(uglify()) //压缩js
-        .pipe(concat('all.js')) //合并js
+        // .pipe(concat('all.js')) //合并js
         .pipe(sourcemaps.write()) //输出js源码
         .pipe(browserify()) //模块化
         .pipe(gulp.dest('lib/js')) //输出js
@@ -84,7 +83,7 @@ gulp.task('jsWatch', function() {
 //对html文件进行的处理
 gulp.task('html', function() {
     gulp.src("src/html/*.html")
-        .pipe(gulp.dest('lib'))
+        .pipe(gulp.dest('lib/html'))
         .pipe(livereload())
         .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
 });
@@ -94,6 +93,19 @@ gulp.task('htmlWatch', function() {
     gulp.watch('src/html/*.html', ['html']);
 });
 
+// // 将引入的脚本库进行转移
+// gulp.task('libJs',function () {  
+//     gulp.src('src/js/lib/*.js')
+//     .pipe(gulp.dest('lib/js/lib'))
+//     .pipe(livereload())
+//     .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
+// });
+
+// // 对lib文件进行检测，异动就执行html任务
+// gulp.task('libJsWatch', function() {
+//     livereload.listen();
+//     gulp.watch('src/js/lib/*.js', ['libJs']);
+// });
 
 //Server,开启一个本地服务器，打开浏览器，并根据文件 
 gulp.task('server', function() {
