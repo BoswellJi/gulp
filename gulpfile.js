@@ -85,7 +85,7 @@ gulp.task('html', function() {
     gulp.src("src/html/*.html")
         .pipe(gulp.dest('lib/html'))
         .pipe(livereload())
-        .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
+        // .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
 });
 // 对html文件进行检测，异动就执行html任务
 gulp.task('htmlWatch', function() {

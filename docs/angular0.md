@@ -40,6 +40,7 @@
 5. ng-show="true"
 6. ng-hide="true"
 7. ng-clack  当元素中的数据没有加载过来，元素隐藏
+8. ng-bind-template ="{{name}}{{age}}"
 
 ##过滤器
 - 将获取的数据进行一定规则的格式化等操作；
