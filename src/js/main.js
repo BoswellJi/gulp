@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 // var map=new Map('app',{maxZoom:1});
 
 // 百度地图API功能
-var map = new BMap.Map("app");    // 创建Map实例
+var map = new BMap.Map("app"); // 创建Map实例
 
 // 设置地图中心点
 // 初始化地图,设置中心点坐标和地图级别
@@ -58,10 +57,10 @@ map.addControl(s);
 // map.addOverlay(marker);
 
 //添加线
-var pointA = new BMap.Point(106.486654, 29.490295);  // 创建点坐标A--大渡口区
-var pointB = new BMap.Point(106.581515, 29.615467);  // 创建点坐标B--江北区
+var pointA = new BMap.Point(106.486654, 29.490295); // 创建点坐标A--大渡口区
+var pointB = new BMap.Point(106.581515, 29.615467); // 创建点坐标B--江北区
 
-var polyline = new BMap.Polyline([pointA,pointB], {strokeColor:"blue", strokeWeight:1, strokeOpacity:0.5,strokeStyle:'dashed'});  //定义折线
+var polyline = new BMap.Polyline([pointA, pointB], { strokeColor: "blue", strokeWeight: 1, strokeOpacity: 0.5, strokeStyle: 'dashed' }); //定义折线
 map.addOverlay(polyline);
 
 
@@ -107,21 +106,19 @@ map.addOverlay(polyline);
 // });
 
 
-map.addEventListener('click',function(ev){
+map.addEventListener('click', function(ev) {
     // alert(ev.point.lng+","+ev.point.lat);
-    addMarker(ev.point.lng,ev.point.lat);
+    addMarker(ev.point.lng, ev.point.lat);
 });
 
 
-function addMarker(lng,lat){
-    var point=new BMap.Point(lng,lat);
-    var marker=new BMap.Marker(point);
-    var windowInfo=new BMap.InfoWindow('<div">jmz</div>',{width:230,height:300,title:'警告'});
+function addMarker(lng, lat) {
+    var point = new BMap.Point(lng, lat);
+    var marker = new BMap.Marker(point);
+    var windowInfo = new BMap.InfoWindow('<div">jmz</div>', { width: 230, height: 300, title: '警告' });
     // marker.openInfoWindow(windowInfo);
-    marker.addEventListener('click',function(){
-        map.openInfoWindow(windowInfo,point);
+    marker.addEventListener('click', function() {
+        map.openInfoWindow(windowInfo, point);
     });
     map.addOverlay(marker);
 }
-=======
->>>>>>> c9881f5f182e3e4f58212140d7ed79fa074ad0e1

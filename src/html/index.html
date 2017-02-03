@@ -5,58 +5,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <!--<link rel="stylesheet" href="../css/bootstrap.css" />
     <link rel="stylesheet" href="../css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/main.css" />-->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        div[ui-view="top"] {
+            background: red;
+        }
+        
+        div[ui-view="left"] {
+            background: blue;
+            float: left;
+            width: 200px;
+        }
+        
+        div[ui-view="right"] {
+            background: yellow;
+            float: left;
+            width: 80%;
+        }
+    </style>
 </head>
 
-<body>
-    <!--<div ng-app="mod1">
-        <ul ng-controller="c1">
-            <li ng-repeat="(key,item) in arr">
-                值{{item}} 索引{{key}}
-            </li>
-        </ul>
-    </div>-->
-
-    <div ng-app="mod2">
-        <div ng-controller="c2">
-            <input type="button" value="单机" ng-click="alert(str)" />
-            <input type="text" name="" value="" ng-model="str" />
-            <span>{{str}}</span>
-        </div>
-    </div>
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=Rqg1ypPGKq7PFCx8VO1ONye7AQEHQDqt"></script>
-    <script src="../js/lib/jquery.js"></script>
-    <script src="../js/lib/bootstrap.js"></script>
-    <script src="../js/lib/angular.js"></script>
+<body ng-app="test">
+    <div ui-view="top"></div>
+    <div ui-view="left"></div>
+    <div ui-view="right"></div>
+    <script src="../js/lib/angular.min.js"></script>
+    <script src="../js/lib/angular-ui-router.js">
+    </script>
     <script>
-        var mod1 = angular.module('mod1', []);
+        var app = angular.module('test', ['ui.router']);
 
-        mod1.controller('c1', function($scope) {
-            $scope.arr = ['a', 'b', 'c'];
-        });
+        // 多视图下的视图嵌套[路由嵌套]
+        app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise('/home');
 
-        var mod2 = angular.module('mod2', []);
-        mod2.controller('c2', function($scope, $http) {
-            // get方式
-            // $http.get('../data/data.json', {
-            //     params: {
-            //         a: 'a'
-            //     }
-            // }).then(function(res) {
-            //     console.log(res)
-            // }, function(err) {
-            //     console.log(err);
-            // });
+            $stateProvider
+                .state('home', {
+                    url: '/home',
+                    views: {
+                        'top': {
+                            templateUrl: './header.html'
+                        }
+                    }
+                })
+                .state('home.games', {
+                    url: '/games',
+                    views: {
+                        'son@home': {
+                            templateUrl: './right.html'
+                        }
+                    }
+                })
+        }]);
 
-            $http.get('../data/data.json', {
-                params: {
-                    a: 'a'
-                },
-                responseType: 'json'
-            }).success(function(res) {}).error(function(err) {});
-        });
+        // 1.路由的配置
+        // app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        //     $urlRouterProvider.otherwise('/home');
+
+        //     $stateProvider
+        //         .state('home', {
+        //             url: '/home',
+        //             templateUrl: './header.html'
+        //         })
+        //         // 嵌套路由的实现方式
+        //         .state('home.news', {
+        //             url: '/news',
+        //             template: '<h1>news</h1>'
+        //         })
+        //         .state('games', {
+        //             url: '/games',
+        //             parent: 'home',
+        //             template: '<h1>games</h1>'
+        //         })
+        // }]);
+
+        // 多视图路由
+        // app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        //     $urlRouterProvider.otherwise('/home');
+
+        //     $stateProvider
+        //         .state('home', {
+        //             url: '/home',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './left.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './right.html'
+        //                 }
+        //             }
+        //         })
+        //         .state('games', {
+        //             url: '/games',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './game_info.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './game_lists.html'
+        //                 }
+        //             }
+        //         })
+        //         .state('lol', {
+        //             url: '/lol/{id}',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './game_info_lol.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './game_lists.html'
+        //                 }
+        //             }
+        //         })
+
+        // }]);
     </script>
 </body>
 

@@ -85,7 +85,7 @@ gulp.task('html', function() {
     gulp.src("src/html/*.html")
         .pipe(gulp.dest('lib/html'))
         .pipe(livereload())
-        .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
+        // .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
 });
 // 对html文件进行检测，异动就执行html任务
 gulp.task('htmlWatch', function() {
@@ -93,19 +93,19 @@ gulp.task('htmlWatch', function() {
     gulp.watch('src/html/*.html', ['html']);
 });
 
-// // 将引入的脚本库进行转移
-// gulp.task('libJs',function () {  
-//     gulp.src('src/js/lib/*.js')
-//     .pipe(gulp.dest('lib/js/lib'))
-//     .pipe(livereload())
-//     .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
-// });
+// 将引入的脚本库进行转移
+gulp.task('libJs', function() {
+    gulp.src('src/js/lib/*.js')
+        .pipe(gulp.dest('lib/js/lib'))
+        .pipe(livereload())
+        .pipe(notify({ errorHandler: notify.onError('Error: <%= error.message %>') }));
+});
 
-// // 对lib文件进行检测，异动就执行html任务
-// gulp.task('libJsWatch', function() {
-//     livereload.listen();
-//     gulp.watch('src/js/lib/*.js', ['libJs']);
-// });
+// 对lib文件进行检测，异动就执行html任务
+gulp.task('libJsWatch', function() {
+    livereload.listen();
+    gulp.watch('src/js/lib/*.js', ['libJs']);
+});
 
 //Server,开启一个本地服务器，打开浏览器，并根据文件 
 gulp.task('server', function() {
@@ -116,4 +116,4 @@ gulp.task('server', function() {
         }));
 });
 
-gulp.task('default', ['testWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch']);
+gulp.task('default', ['testWatch', 'libJsWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch']);
