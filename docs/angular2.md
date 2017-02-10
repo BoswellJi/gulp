@@ -1,12 +1,5 @@
 ## angular part3
 
-## $scope服务
-
-##指令
-- ng-value="9-9"：可以写表达式
-
-
-
 ##路由 ui-router
 - ui-sref="list" 定义路由直接跳转
 
@@ -80,4 +73,101 @@ app.config(['$routeProvider', function($routeProvider) {
     3. 路由的父子级别嵌套
      - 现在要解决的问题是：在模板中有导航，点击导航将内容显示在导航下面，但是整个模板是在最上层的路由容器中，点击完会将模板内容清空显示；所以需要嵌套路由；
      - 子视图：视图下的视图，嵌套视图
+```
+```
+    // var app = angular.module('test', ['ui.router']);
+
+        // // 多视图下的视图嵌套[路由嵌套]
+        // app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        //     $urlRouterProvider.otherwise('/home');
+
+        //     $stateProvider
+        //         .state('home', {
+        //             url: '/home',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 }
+        //             }
+        //         })
+        //         .state('home.games', {
+        //             url: '/games',
+        //             views: {
+        //                 'son@home': {
+        //                     templateUrl: './right.html'
+        //                 }
+        //             }
+        //         })
+        // }]);
+
+        // 1.路由的配置
+        // app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        //     $urlRouterProvider.otherwise('/home');
+
+        //     $stateProvider
+        //         .state('home', {
+        //             url: '/home',
+        //             templateUrl: './header.html'
+        //         })
+        //         // 嵌套路由的实现方式
+        //         .state('home.news', {
+        //             url: '/news',
+        //             template: '<h1>news</h1>'
+        //         })
+        //         .state('games', {
+        //             url: '/games',
+        //             parent: 'home',
+        //             template: '<h1>games</h1>'
+        //         })
+        // }]);
+
+        // 多视图路由
+        // app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        //     $urlRouterProvider.otherwise('/home');
+
+        //     $stateProvider
+        //         .state('home', {
+        //             url: '/home',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './left.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './right.html'
+        //                 }
+        //             }
+        //         })
+        //         .state('games', {
+        //             url: '/games',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './game_info.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './game_lists.html'
+        //                 }
+        //             }
+        //         })
+        //         .state('lol', {
+        //             url: '/lol/{id}',
+        //             views: {
+        //                 'top': {
+        //                     templateUrl: './header.html'
+        //                 },
+        //                 'right': {
+        //                     templateUrl: './game_info_lol.html'
+        //                 },
+        //                 'left': {
+        //                     templateUrl: './game_lists.html'
+        //                 }
+        //             }
+        //         })
+
+        // }]);
 ```

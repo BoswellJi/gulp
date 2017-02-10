@@ -13,5 +13,5 @@
 // BMap.Overlay.show();
 // map.addOverlay(new BMap.Marker((new BMap.Point(116.404, 39.915), { icon: }));
 
-//         map.disableDragging()
+//         map.disableDragging  ()
 //         // map.enableScrollWheelZoom()()

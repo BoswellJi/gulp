@@ -12,12 +12,7 @@
 2. ng-app="字符串"  angular自己的东西用字符串
 3. scr="{{}}"       html的东西显示用模板
 
-##mvc
-1. m    model数据，存，取，但是数据的逻辑处理不在这里；
-2. v    viewUI,显示数据，用户交互；
-3. c    controller,处理v传过来的数据，放回model,处理model传过来的数据，在view中显示；
-- 放代码
-- 桥梁  m  <->  c
+
 
 ##angular api
 1. var mod1=angular.module('param',[]);
@@ -45,30 +40,6 @@
 ##过滤器
 - 将获取的数据进行一定规则的格式化等操作；
 - 使用方式{{item | filterName}}
-
-##angular程序与服务器之间的数据交互
-- 使用controller('c',function($scope,$http){})中的$http进行交互
-- $http.get(url,{params:{}}); 返回一个promise对象
-- promise.then(function(res){},function(err){})
-```
-  $http.get('../data/data.json', {
-                params: {
-                    a: 'a',
-                    responseType:'json'
-                }
-            }).then(function(res) {
-                console.log(res)
-            }, function(err) {
-                console.log(err);
-   });
-
-   $http.get('../data/data.json', {
-                params: {
-                    a: 'a'
-                },
-                responseType: 'json'
-            }).success(function(res) {}).error(function(err) {});
-```
 
 ##事件
 - 在angular中事件相当于一个指令，都是以ng-开头；ng-click="fn()"
