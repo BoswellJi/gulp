@@ -58,4 +58,15 @@
     ```
 3. $filter
     - 自定义filter
+    ```
+     var testMod = angular.module('test', []);
+        testMod.filter('filter1', function() {
+            return function(item) {
+                return item + 2;
+            }
+        });
+        testMod.controller('testController', function() {
+
+        });
+    ```
 

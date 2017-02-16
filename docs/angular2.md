@@ -1,9 +1,8 @@
 ## angular part3
+1. ajax请求没有history记录
 
 ##路由 ui-router
 - ui-sref="list" 定义路由直接跳转
-
-
 
 - 自身路由
 ```
@@ -25,6 +24,8 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 <div ng-view></div>：定义视图显示位置
 ```
+
+
 - 与第三方路由
 ```
     1. 路由的配置

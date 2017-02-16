@@ -3,54 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Document</title>
-    <!--<link rel="stylesheet" href="../css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/bootstrap-theme.css" />
-    <link rel="stylesheet" href="../css/main.css" />-->
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        
-        div[ui-view="top"] {
-            background: red;
-        }
-        
-        div[ui-view="left"] {
-            background: blue;
-            float: left;
-            width: 200px;
-        }
-        
-        div[ui-view="right"] {
-            background: yellow;
-            float: left;
-            width: 80%;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/first.css" />
 </head>
 
-<body ng-app="test">
-    <div ng-controller="testController">
-        {{'jmz' | filter1}}
+<body>
+    <div class="warp">
+        <header class="header">
+
+        </header>
     </div>
-
-    <script src="../js/lib/angular.min.js"></script>
-    <script src="../js/lib/angular-ui-router.js">
-    </script>
-    <script>
-        var testMod = angular.module('test', []);
-        testMod.filter('filter1', function() {
-            return function(item) {
-                return item + 2;
-            }
-        });
-        testMod.controller('testController', function() {
-
-        });
-    </script>
 </body>
 
 </html>
