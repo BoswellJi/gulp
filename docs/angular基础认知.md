@@ -30,32 +30,7 @@
 ## 依赖注入
 
 
-##指令
-- ng-value="9-9"：可以写表达式
 
-##内置指令
-- 指令拓展html标签的功能；
-- ng-class="{red:true,blue:true}"
-- ng-include:引入模板
-```
- <div ng-include="'header.html'"></div>
-```
-- ng-switch on ng-switch-then
-```
-<li ng-repeat="item in items" ng-switch on="item">
-            <span ng-switch-when="jmz">{{item}}</span>
-        </li>
-```
-
-##自定义指令
-```
- app.directive('tagName', function() {
-            return {
-                restrict: "A", //限制指令通过特定的方式来定义
-                template: '<h1>这是个自定义的指令</h1>'
-            };
-        });
-```
 
 ##数据绑定
 - 单项数据绑定
@@ -69,5 +44,4 @@
 2. ng-bind ng-bind-template
 
 
-##js小技巧
 

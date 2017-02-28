@@ -15,7 +15,7 @@ var babel = require('gulp-babel');
 var browserSync = require('browser-sync').create(); //开启本地服务器，检测文件异常进行实时刷新
 var webserver = require('gulp-webserver'); //开启本地服务器，检测文件异常进行实时刷新
 var browserify = require('gulp-browserify'); //commonjs模块化解决方案
-
+var htmlHelper=require('gulp-html-helper');
 //编译jsx文件
 var react = require('gulp-react');
 gulp.task('jsx', function() {
@@ -116,4 +116,18 @@ gulp.task('server', function() {
         }));
 });
 
-gulp.task('default', ['testWatch', 'libJsWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch']);
+// 处理html中的引用资源
+gulp.task('imgHandler',function(){
+    return gulp.src('src/*.html')
+               .pipe(htmlHelper({
+                staticPath:'lib',
+                urlBasePath:'lib/',
+                rootPathIMG:'img/',
+                rootPathCSS:'css/',
+                rootPathJS:'js/',
+                aliasPath:{'originalPath':'aliasPath'}
+               }))
+               .pipe(gulp.dest('lib'));
+});
+
+gulp.task('default', ['testWatch', 'libJsWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch','imgHandler']);

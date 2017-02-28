@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+</head>
+
+<body>
+   <hello></hello>
+   <div hello></div>
+   <div class="hello"></div>
+   <!-- directive:hello -->
+   <div></div>
+
+   <script src="../js/lib/angular.js"></script>
+   <script>
+   
+
+   	var module=angular.module('app',[]);
+
+   	// 将模板缓存起来，让其他指令也可以使用
+   	module.run(function($templateCache){
+   		$templateCache.put('template','<div>template</div>');
+   	});
+
+   	// 自定义指令
+   	module.directive('hello',function($templateCache){
+   		return {
+   			restrict:'ECAM',
+   			//template:'<p>hello,angular</p>',
+   			template:$templateCache.get('template'),
+   			templateUrl:'',
+   			replace:true
+   		}
+   	});
+   </script>
+</body>
+
+</html>
