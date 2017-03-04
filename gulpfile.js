@@ -16,8 +16,12 @@ var browserSync = require('browser-sync').create(); //开启本地服务器，�
 var webserver = require('gulp-webserver'); //开启本地服务器，检测文件异常进行实时刷新
 var browserify = require('gulp-browserify'); //commonjs模块化解决方案
 var htmlHelper=require('gulp-html-helper');
-//编译jsx文件
-var react = require('gulp-react');
+var react = require('gulp-react');   //编译jsx文件
+var postcss = require('gulp-postcss');
+
+var cssnext = require('cssnext');
+
+
 gulp.task('jsx', function() {
     return gulp.src('src/jsx/*.jsx')
         .pipe(browserify()) //模块化
@@ -34,6 +38,17 @@ gulp.task('jsxWatch', function() {
 
 // 编译less文件
 gulp.task('lessback', function() {
+
+    //定义postcss任务流数组
+  var processors = [
+    autoprefixer({
+      browsers:['last 3 version'],
+      cascade: false,
+      remove: false
+    }),
+    cssnext()
+  ];
+
     gulp.src('src/less/*.less')
         .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })) //提示
         .pipe(sourcemaps.init()) //less源码初始化
@@ -47,6 +62,7 @@ gulp.task('lessback', function() {
             //        transform: rotate(45deg);
             remove: true //是否去掉不必要的前缀 默认：true 
         }))
+        .pipe(postcss(processors))  //支持css新特性
         // .pipe(concat('all.css')) //合并后的文件名
         .pipe(gulp.dest('lib/css')) //输出
         .pipe(livereload()); //实时刷新

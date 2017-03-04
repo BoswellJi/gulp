@@ -43,9 +43,9 @@
                         a: 'a',
                         responseType:'json'
                     }
-                }).then(function(res) {
+                }).then(function(res,status,headers,config) {
                     console.log(res)
-                }, function(err) {
+                }, function(err,status,headers,config) {
                     console.log(err);
     });
 

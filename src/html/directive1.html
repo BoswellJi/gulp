@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>指令之间的交互</title>
+</head>
+
+<body >
+   <div>
+   <div>
+      <supperman strength>strength</supperman>
+      </div>
+      <div>
+      <supperman strength speed>strength speed</supperman>
+      </div>
+      <div>
+      <supperman strength speed ligth>strength speed ligth</supperman>
+      </div>
+   </div>
+   <hello ></hello>
+   <hello ></hello>
+   <hello ></hello>
+   <script src="../js/lib/angular.js"></script>
+   <script>
+   var module=angular.module('app',[]);
+
+   module.directive('hello',function(){
+      return {
+         restrict:'E',
+         scope:{},
+         template:'<div><input type="text" ng-model="name" />{{name}}</div>'
+      }
+   });
+
+
+   module.directive('supperman',function(){
+      return {
+         scope:[],       //创建独立的作用域
+         restrict:'EA',  //以哪种方式去使用指令
+         controller:function($scope){  //指令对外开发的接口
+            $scope.attrsList=[];
+            this.addStrength=function(){
+               $scope.attrsList.push('strength');
+            }
+            this.addSpeed=function(){
+               $scope.attrsList.push('speed');
+            }
+            this.addLight=function(){
+               $scope.attrsList.push('light');
+            }
+         },
+         link:function(scope,element,attrs){ //操作指令内部的逻辑
+            element.bind('mouseenter',function(ev){
+               console.log(scope.attrsList);
+            });
+         }
+      }
+   });
+
+   module.directive('strength',function(){
+      return {
+         require:'supperman',  //依赖的父指令
+         link:function(scope,element,attrs,supperman){
+            supperman.addStrength();
+         }
+      }
+   });
+
+   module.directive('speed',function(){
+      return {
+         require:'supperman',
+         link:function(scope,element,attrs,supperman){
+            supperman.addStrength();
+            supperman.addSpeed();
+         }
+      }
+   });
+
+   module.directive('ligth',function(){
+      return {
+         require:'supperman',
+         link:function(scope,element,attrs,supperman){
+            supperman.addStrength();
+            supperman.addSpeed();
+            supperman.addLight();
+         }
+      }
+   });
+
+   	
+   </script>
+</body>
+
+</html>

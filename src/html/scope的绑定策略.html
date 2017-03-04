@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>scope的绑定策略</title>
+</head>
+
+<body >
+ <div ng-controller="myController">
+ 	<hello name1="getGreet(name)">
+ 		<hello></hello>
+ 	</hello>
+ </div>
+
+   <script src="../js/lib/angular.js"></script>
+	<script src="../js/mod1.js"></script>
+   <script>
+   var module=angular.module('app',[]);
+
+   module.controller('myController',function($scope){
+
+   	$scope.getGreet=function(name){
+   		alert(name);
+   	}
+   });
+   
+   module.directive('hello',function(){
+   	return {
+   		restrict:'EA',
+   		transclude:true,  //允许指令之间的嵌套使用
+   		scope:{
+   			//name:'@'
+   			//name:'='
+   			name1:'&'
+   		},
+   		template:'<input type="text" ng-model="nameUser"  /><button type="button" ng-click="name1({name:nameUser})">greet</button>'
+   		//template:'<input type="text" ng-model="name" />'
+   		//template:'<div>{{name}}</div>'
+   		// ,
+   		// link:function(scope,element,attrs){
+   		// 	// 将指令属性上的值获取到，添加到scope上
+   		// 	scope.name=attrs.name;
+   		// }
+   	}
+   });
+
+    
+   </script>
+</body>
+
+</html>

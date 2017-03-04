@@ -6,9 +6,15 @@
     <title>指令</title>
 </head>
 
-<body>
-   <hello></hello>
-   <div hello></div>
+<body >
+<div ng-controller="allController">
+   <hello getData="getData()">
+   	<div>hahah</div>
+   </hello>
+ </div>
+<div ng-controller="allController1">
+   <div hello getData="getData2()"></div>
+</div>
    <div class="hello"></div>
    <!-- directive:hello -->
    <div></div>
@@ -18,6 +24,18 @@
    
 
    	var module=angular.module('app',[]);
+
+   	// 定义控制器
+   	module.controller('allController',['$scope',function($scope){
+   		$scope.getData=function(){
+   			console.log('加载数据！');
+   		}
+   	}]);
+   	module.controller('allController1',['$scope',function($scope){
+   		$scope.getData2=function(){
+   			console.log('getData2...');
+   		}
+   	}]);
 
    	// 将模板缓存起来，让其他指令也可以使用
    	module.run(function($templateCache){
@@ -31,7 +49,14 @@
    			//template:'<p>hello,angular</p>',
    			template:$templateCache.get('template'),
    			templateUrl:'',
-   			replace:true
+   			//replace:true,
+   			link:function(scope,element,attrs){
+   				element.bind('mouseover',function(ev){
+   					// scope.getData();
+   					// 
+   					scope.$apply(attrs.getdata);
+   				})
+   			}
    		}
    	});
    </script>
