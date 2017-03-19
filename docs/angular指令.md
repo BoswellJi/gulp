@@ -15,6 +15,10 @@
 - ng-bind-template ="{{name}}{{age}}"
 - ng-value="9-9"：          可以写表达式
 - ng-class="{red:true,blue:true}"
+```
+ng-class="[1,2,3]" 处理后输出
+class="{{[1,2,3]}}" 直接输出[1,2,3]
+```
 - ng-include:引入模板
 ```
  <div ng-include="'header.html'"></div>
@@ -24,7 +28,10 @@
 <li ng-repeat="item in items" ng-switch on="item">
             <span ng-switch-when="jmz">{{item}}</span>
         </li>
+ng-repeat: 遍历的数组中不允许有同样的元素，必须找到这条数据中不同的部分
+ng-repeat + ng-click :ng-click需要执行函数，不能直接执行js表达式
 ```
+
 
 ### 自定义angular指令
 ```

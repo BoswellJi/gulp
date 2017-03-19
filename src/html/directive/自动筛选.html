@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular tab</title>
+
+</head>
+<body>
+ 
+ <div ng-app="app" ng-controller="contrl">
+ 	 <drop-list />
+ </div>
+	 
+
+	<script src="../../bower_components/angular/angular.js"></script>
+	<script>
+		 var m=angular.module('app',[]);
+		  m.controller('contrl',['$scope','$location',function($scope,$location){
+		 	 $scope.arr=['aaa','bbb']
+		 }]);
+		 m.directive('dropList',function(){
+		 	return {
+		 		restrict:'E',
+		 		// scope:{
+		 		// 	'arr':'@arr'
+		 		// },
+		 		template:'\
+		 		<input type="text" ng-model="str" />{{str}}\
+		 		<ul>\
+		 			<li ng-repeat="v in arr" ng-show="v.indexOf(str)!=-1?true:false">\
+		 				{{v}}  {{v.indexOf(str)>-1}} \
+		 			</li>\
+		 		</ul>'
+		 	}
+		 });
+
+		
+	</script>
+
+</body>
+</html>

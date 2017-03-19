@@ -10,6 +10,7 @@
 1. model:服务中的数据
 2. view:html
 3. controller中的$scope
+4. angular应用脱离了
 
 
 ## vue与angular
@@ -28,7 +29,6 @@
 ![图像](../img/$scope.png)
 
 ## 依赖注入
-
 
 
 

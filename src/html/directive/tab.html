@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular tab</title>
+
+</head>
+<body>
+ 
+ <div ng-app="app" ng-controller="contrl">
+ 	<ul>
+ 		<li ng-class="now==$index?'background:yellow;':''" ng-repeat="(key, value) in data" ng-click="tab($index)">{{value.name}}</li>
+ 	</ul>
+ 	<div ng-repeat="(key, value) in data" ng-class="now!=$index?'display:none;':''">
+ 		{{value.content}}
+ 	</div>
+ </div>
+	 
+
+	<script src="../../bower_components/angular/angular.js"></script>
+	<script>
+		 var m=angular.module('app',[]);
+		 m.controller('contrl',['$scope','$location',function($scope,$location){
+		 	$scope.now=0;
+		 	$scope.data=[
+		 		{name:'1',content:'1111'},
+		 		{name:'2',content:'2222'},
+		 		{name:'3',content:'3333'}
+		 	]
+
+		 	$scope.tab=function(index){
+		 		this.now=index;
+		 	}
+
+		 	console.log($location.path());
+		 }]);
+	</script>
+
+</body>
+</html>
