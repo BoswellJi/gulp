@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+</head>
+<!-- 
+    一个程序、框架中每个特性都需要可以进行拓展；
+    过滤器：
+    1. 内置
+    2. 自定义
+  -->
+
+<body >
+<div ng-controller="allController">
+ {{str | addStart : 5}}
+ </div>
+
+
+
+   <script src="../js/lib/angular.js"></script>
+   <script>
+   
+
+   	var module=angular.module('app',[]);
+
+   
+    module.filter('addStart',function(){
+    /**
+     * @param {[string]} [str] [description]
+     * @param {number} [len] [替换多少个文本]
+     */
+      return function(str,len){
+       len= len?len:3;
+
+        return str.substr(0,11-len)+new String('*').repeat(len);
+      }
+    });
+
+    
+   	module.controller('allController',['$scope','$filter',function($scope,$filter){
+   		 $scope.str='13812872860';
+   	}]);
+
+    
+   </script>
+</body>
+
+</html>

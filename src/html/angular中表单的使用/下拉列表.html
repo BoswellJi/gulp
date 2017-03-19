@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular 下拉列表 </title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	<div ng-app="app" ng-controller="app">
+		<select ng-cloak name="" id="" ng-options="v.value as v.name for v in data" ng-model="city" >
+			<option value="">请选择城市</option>
+		</select>
+	</div>
+	 
+	<script src="../js/lib/angular.js"></script>
+    <script >
+    var M=angular.module('app',[]);
+    M.controller('app',['$scope',function($scope){
+    	 $scope.city='beijing'; //默认值设置
+    	 $scope.data=[
+    	 {name:'北京',value:'beijing'},
+    	 {name:'连云港',value:'lianyungang'}]
+    }]);
+    	
+    </script>
+</body>
+</html>

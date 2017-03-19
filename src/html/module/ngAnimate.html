@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+   
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+     {{name}}
+
+     <ng-animate-children
+  ng-animate-children="string">
+...
+</ng-animate-children>
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+    <script>
+    var module = angular.module('app', ['ngAnimate']);
+
+    module.controller('myController',['$scope',function($scope){
+      $scope.name="jmz"
+    }]);
+    
+    </script>
+</body>
+
+</html>

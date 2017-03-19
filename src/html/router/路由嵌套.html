@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	.active{
+    		color: red;
+    	}
+    </style>
+</head>
+<!-- 
+
+angular-ui-router:
+一个路由模块
+ 
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+    <div ui-view></div>
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script>
+    var module = angular.module('app',['ui.router']);
+
+    
+
+    module.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+      $urlRouterProvider.otherwise('/home');
+      $stateProvider
+        .state('home',{
+          url:'/home',
+          templateUrl:'./templates/1.html'
+        })
+       .state('game',{
+          url:'/game',
+          parent:'home',
+          template:'<div>game</div>'
+        })
+       .state('login',{
+          url:'/login',
+          parent:'home',
+          template:'<div>login</div>'
+        })
+    }]);
+
+    
+    module.controller('myController',['$scope',function($scope){
+    	
+    }]);
+    
+    </script>
+</body>
+
+</html>

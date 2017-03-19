@@ -15,8 +15,8 @@ var babel = require('gulp-babel');
 var browserSync = require('browser-sync').create(); //开启本地服务器，检测文件异常进行实时刷新
 var webserver = require('gulp-webserver'); //开启本地服务器，检测文件异常进行实时刷新
 var browserify = require('gulp-browserify'); //commonjs模块化解决方案
-var htmlHelper=require('gulp-html-helper');
-var react = require('gulp-react');   //编译jsx文件
+var htmlHelper = require('gulp-html-helper');
+var react = require('gulp-react'); //编译jsx文件
 var postcss = require('gulp-postcss');
 
 var cssnext = require('cssnext');
@@ -25,7 +25,7 @@ var cssnext = require('cssnext');
 gulp.task('jsx', function() {
     return gulp.src('src/jsx/*.jsx')
         .pipe(browserify()) //模块化
-        .pipe(babel({ presets: ['react'] })) //对react进行编译
+        .pipe(babel({ presets: ['react', "es2015", "stage-2"] })) //对react进行编译
         // .pipe(concat('all1.js'))
         .pipe(gulp.dest('lib/js'));
 });
@@ -40,14 +40,14 @@ gulp.task('jsxWatch', function() {
 gulp.task('lessback', function() {
 
     //定义postcss任务流数组
-  var processors = [
-    autoprefixer({
-      browsers:['last 3 version'],
-      cascade: false,
-      remove: false
-    }),
-    cssnext()
-  ];
+    var processors = [
+        autoprefixer({
+            browsers: ['last 3 version'],
+            cascade: false,
+            remove: false
+        }),
+        cssnext()
+    ];
 
     gulp.src('src/less/*.less')
         .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })) //提示
@@ -62,7 +62,7 @@ gulp.task('lessback', function() {
             //        transform: rotate(45deg);
             remove: true //是否去掉不必要的前缀 默认：true 
         }))
-        .pipe(postcss(processors))  //支持css新特性
+        .pipe(postcss(processors)) //支持css新特性
         // .pipe(concat('all.css')) //合并后的文件名
         .pipe(gulp.dest('lib/css')) //输出
         .pipe(livereload()); //实时刷新
@@ -125,7 +125,7 @@ gulp.task('libJsWatch', function() {
 
 //Server,开启一个本地服务器，打开浏览器，并根据文件 
 gulp.task('server', function() {
-    gulp.src('src')
+    gulp.src('./')
         .pipe(webserver({ //浏览器自动打开加上自动刷新
             livereload: true,
             open: true
@@ -133,17 +133,17 @@ gulp.task('server', function() {
 });
 
 // 处理html中的引用资源
-gulp.task('imgHandler',function(){
+gulp.task('imgHandler', function() {
     return gulp.src('src/*.html')
-               .pipe(htmlHelper({
-                staticPath:'lib',
-                urlBasePath:'lib/',
-                rootPathIMG:'img/',
-                rootPathCSS:'css/',
-                rootPathJS:'js/',
-                aliasPath:{'originalPath':'aliasPath'}
-               }))
-               .pipe(gulp.dest('lib'));
+        .pipe(htmlHelper({
+            staticPath: 'lib',
+            urlBasePath: 'lib/',
+            rootPathIMG: 'img/',
+            rootPathCSS: 'css/',
+            rootPathJS: 'js/',
+            aliasPath: { 'originalPath': 'aliasPath' }
+        }))
+        .pipe(gulp.dest('lib'));
 });
 
-gulp.task('default', ['testWatch', 'libJsWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch','imgHandler']);
+gulp.task('default', ['testWatch', 'libJsWatch', 'jsWatch', 'htmlWatch', 'server', 'jsxWatch', 'imgHandler']);

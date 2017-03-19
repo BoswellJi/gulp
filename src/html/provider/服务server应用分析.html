@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+
+
+   $scope.$apply进行数据脏检查
+   当手动更改了$scope上的数据时候，不会触发angular的脏检查，更新视图，需要手动触发；
+
+  定时器
+   var a=$timeout
+   $timeout.cannel(a)
+
+   var b=$interval
+   $interval.cannel(b);
+
+
+   $window
+
+   $ace：服务安全的处理html
+
+   $cacheFactory：缓存处理
+   跨控制器使用
+   $cacheFactory.get('表名');
+
+
+   $http:与后台交互
+
+   http请求的缓存处理
+   使用$cacheFactory服务缓存请求的数据，将数据缓存下来，当刷新后重新请求
+
+
+   自定义服务
+   m.factory('my',function(){
+    var obj={
+      data:[], //值复制，控制器改变没变化
+      data:{}  //任何控制器改变这里的数据都会有变化
+    }
+    return {
+  
+    }
+   });
+
+   m.service('a',function(){
+    this.get=function(){
+  
+    }
+   });
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+    <!-- <button ng-click="">点击</button> -->
+    <!-- <div ng-bind-html="name"></div> -->
+    <!-- {{name}} -->
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script>
+    var module = angular.module('app',[]);
+
+    module.factory('getHttp',['$http',function($http){
+      return {
+        get:function(url){
+          return $http({url:url});
+        }
+      }
+    }]);
+
+    module.controller('myController',['$scope','$cacheFactory','getHttp',function($scope,$cacheFactory,getHttp){
+
+      getHttp.get('../data/data.json').then(function(res){
+        console.log(res);
+      }).then(function(err){
+        console.log(err);
+      });
+
+      // 配合ng-bind-html
+        // $scope.name=$sce.trustAsHtml('<h1>jmz</h1>');
+       // var obj=$cacheFactory('web');
+
+       // obj.put('a',{name:'jmz'})
+       // obj.put('b',{name:'jay'});
+
+       // $scope.name=obj.get('a').name;
+
+       // obj.remove('a');
+       // console.log(obj.get('a').name);
+    }]);
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+  使用服务为控制器提供数据
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+  
+    <my-tab></my-tab>
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+   
+    <script>
+    var module = angular.module('app', []);
+
+    module.directive('myTab',function(){
+      return {
+        restrict:'E',
+        templateUrl:'./templates/1.html',
+        scope:{}, //与父级作用域通信
+        link:function(scope,elem,attrs){
+          $(elem).on('click','.nav li',function(ev){
+            $(elem).find('.nav li').removeClass('active');
+            var i=$(ev.target).index();
+             $(elem).find('.nav li').eq(i).addClass('active');
+             $(elem).find('.content div').removeClass('block');
+              $(elem).find('.content div').eq(i).addClass('block');
+          });
+        },
+        controller:['$scope',function($scope){
+          $scope.data=[
+            { 
+              title:'1',
+              lists:[
+                {name:'jmz'}
+              ]
+            },
+            { 
+              title:'1',
+              lists:[
+                {name:'ddd'}
+              ]
+            }
+          ]
+        }]
+      }
+    });
+
+    module.controller('myController',['$scope',function($scope){
+         
+    }]);
+
+    
+    
+    </script>
+</body>
+
+</html>
+
+
+

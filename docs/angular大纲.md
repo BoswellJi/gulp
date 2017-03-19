@@ -23,18 +23,26 @@
  - $scope:作用域，window.a=0; var a=0;
 3. controller的不同写法：
  - mod1.controller('c1',[$scope,$http,function(a,b){}])
+4. 内置与自定义
 
 ##模板
 - {{}} 
 
 ##指令
+- 内置与自定义
+
+
+## 服务
+- 可以将服务理解成根据angular规则来定义的公共类库，然后根据angular的依赖注入机制来在每个需要调用的地方使用；
+- 创建的三种方式
+    + providers，
+    + factory，
+    + service
+- controller中的大部分业务逻辑持久化数据应该放到service中去
+- 内置与自定义
 
 
 ##过滤器
 - 将获取的数据进行一定规则的格式化等操作；
 - 使用方式{{item | filterName}}
-
-##事件
-- 在angular中事件相当于一个指令，都是以ng-开头；ng-click="fn()"
-- angular中的事件处理函数绑定在$scope上；
-- 传入事件处理函数的事件对象都是ev,处理函数的作用域指向$scope===this
+- 内置于自定义

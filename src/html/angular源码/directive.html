@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <div ng-app="appModule" >
+       <div hello="5">
+         <p>hehe</p>
+       </div>
+    </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script>
+     var m=angular.module('appModule',[ ]);
+
+     m.directive('hello',function(){
+      return {
+        restrict:'A',
+        compile:function(el,attrs,transclude){
+          var tpl=el.children().clone();
+          for(var i=0;i<attrs.hello-1;i++){
+            el.append(tpl.clone());
+          }
+          // link 函数
+          return function(scope,el,attrs,controller){
+            console.log('mmm...');
+          }
+        }
+      }
+     });
+
+     /**
+      * complie:
+      * link:
+      * 不能同时使用
+      */
+     
+    
+    </script>
+</body>
+
+</html>

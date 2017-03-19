@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+   angular中使用指令来作为组件进行封装，复用；
+   spa应用的是路由使得组件间跳转
+
+   自定义指令：
+   1. restrict:'E A'
+    E:独立的封装组件
+    A:对原有元素的扩充
+   2. template:
+    string;
+    function(elem,attr){}
+   3. replace:
+    true:替换掉指令标签
+    false:不替换，直接放到标签里面
+   4. transclude:+<div ng-transclude></div>
+    true:将指令中的内容放到指定地方
+   5. templateUrl:
+    不能使用本地地址
+    和replace字段配合使用时候，template必须包裹起来
+
+
+   模块：
+   1. 指令 directive
+   2. 过滤器 filter
+   3. 服务 service
+   4. 配置 config 
+  -->
+
+<body>
+    <self-directive color='red'>
+        content
+    </self-directive>
+    <script src="../js/lib/angular.js"></script>
+    <script>
+    var module = angular.module('app', []);
+
+    module.directive('selfDirective', function() {
+        return {
+            restrict: 'E',
+            //template:'模板'
+            template: function(elem, attr) {
+              console.log(attr.color);
+              return `<h1>${attr.color}<div ng-transclude></div></h1>`;
+            },
+            replace:false,
+            transclude:true,
+            templateUrl:''
+        }
+    });
+
+    </script>
+</body>
+
+</html>

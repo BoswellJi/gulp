@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular directive</title>
+</head>
+<body>
+<!-- 
+	ng-model="name" 默认true/false
+	ng-if="true" 移除
+	ng-show="true" 显示隐藏
+	ng-disabled="true"
+ -->
+	<div ng-app="app" ng-controller="app" ng-init="flag=true">
+		 <input type="checkbox" name="game" ng-model="isChecked" />
+		 {{isChecked}}
+		 <button type="button" ng-hide="!isChecked" ng-click="flag=!flag">查看</button>
+		 <div ng-if="!flag">jmzhhh</div>
+
+		 <button type="button" ng-disabled="!isChecked">登录</button>
+	</div>
+
+	<script src="../js/lib/angular.js"></script>
+	<script>
+		var myModule=angular.module('app',[]);
+		myModule.controller('app',['$scope',function($scope){
+			 
+		}]);
+	</script>
+
+</body>
+</html>

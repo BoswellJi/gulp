@@ -1,0 +1,39 @@
+<style>
+.my-tab .nav {
+    overflow: hidden
+}
+
+.my-tab .nav li {
+    float: left;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+}
+.my-tab .nav .active{
+	background:red
+}
+.my-tab .content div{
+	display: none;
+	width: 300px;
+	height: 200px;
+	border: 1px solid red;
+}
+.my-tab .content .block{
+	display: block;
+}
+</style>
+<!-- <div class="my-tab">
+   {{name}}
+   <a ng-click="go('lists')">hh</a>
+</div>
+
+<div ng-repeat="(k,v) in data">
+    <!-- json对象传递参数 个lists路由，参数由lists路由来接收-->
+   <!--<a ui-sref="lists({id:v.id})">{{v.name}}</a>{{}}
+</div> -->
+
+<div>
+    <a href="" ui-sref="game">游戏</a>
+    <a href="" ui-sref="login">登录</a>
+    <div ui-view></div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular 函数 </title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	<div ng-app="app" ng-controller="app">
+		 
+	</div>
+	 
+	<script src="../js/lib/angular.js"></script>
+    <script >
+    var M=angular.module('app',[]);
+    M.controller('app',['$scope',function($scope){
+    	 // console.log(angular.lowercase('JMZ'));
+    	 // var a='str';
+    	 // var a=new String();
+    	 // a='str';
+    	 // console.log(angular.isString(a));
+
+    	 // var obj={name:'jmz'};
+    	 // angular.extend(obj,{age:24});
+    	 // console.log(obj);
+
+    	 // var obj={name:'jmz',age:24};
+
+    	 // angular.forEach(obj,function(value,index){
+    	 // 	console.log(value+'对象'+index);
+    	 // });
+
+    	 // var arr=[1,2,3];
+    	 // angular.forEach(arr,function(value,index){
+    	 // 	console.log(value+'数组'+index);
+    	 // });
+
+    	 // 处理json与本地存储，数据序列化
+    	 // localStorage.setItem('data',angular.toJson({name:'jmz'}));
+		 // console.log(angular.fromJson(localStorage.getItem('data')).name);
+    }]);
+    	
+    </script>
+</body>
+</html>

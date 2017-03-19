@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+</head>
+<!-- 
+  $scope: 数据
+  $scope.$watch: 监听
+
+  $filter: 
+  -->
+
+<body >
+<div ng-controller="allController">
+<input type="text" ng-model="search" />
+  <ul>
+    <li ng-repeat="(k,v) in lists">
+      {{v.name+v.age}}
+    </li>
+  </ul>
+ </div>
+
+
+
+   <script src="../js/lib/angular.js"></script>
+   <script>
+   
+
+   	var module=angular.module('app',[]);
+
+    
+   	module.controller('allController',['$scope','$filter',function($scope,$filter){
+   		 $scope.data=[
+        {id:1,name:'jmz',age:24},
+        {id:2,name:'jay',age:24},
+        {id:3,name:'aiyou',age:24}
+       ]
+
+       $scope.lists=$scope.data;
+       $scope.$watch('search',function(n,o){
+        $scope.lists=$filter('filter')($scope.data,n);
+       });
+   	}]);
+
+    
+   </script>
+</body>
+
+</html>

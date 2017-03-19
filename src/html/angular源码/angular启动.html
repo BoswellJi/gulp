@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .hide{
+      transition:  all linear 0.5s;
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+    	.ng-toggle{
+        background-color: transparent;
+        height: 0;
+        width: 0;
+      }
+      
+      div[ui-view]{
+        display:block;
+        width: 0px;
+        height: 0px;
+        background-color:transparent;
+        position: absolute;
+      }
+      
+      .ng-enter{transition:0.5s;transform:translateX(100%);}
+.ng-enter-active{transform:translateX(0px);}
+.ng-leave{transition:0.5s;}
+.ng-leave-active{transform:translateX(-100%);}
+    </style>
+</head>
+<!-- 
+
+angular-ui-router:
+一个路由模块
+ 
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+       <a href="" ui-sref="index">index</a>
+       <a href="" ui-sref="about">about</a>
+       <div ui-view></div>
+    </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+    <script>
+     var m=angular.module('app',['ui.router','ngAnimate']);
+
+
+     m.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+      $urlRouterProvider.otherwise('index');
+
+      $stateProvider
+        .state('index',{
+          url:'/index',
+          template:'3434'
+        })
+        .state('about',{
+          url:'/about',
+          template:'44444'
+        })
+     }]);
+     m.controller('myController',['$scope',function($scope){
+
+     }]);
+
+     /**
+      * 一个页面可以加多个ng-app
+      * 但是angular.js只会执行第一个
+      * 第二个可以手动启动
+      */
+
+     // 手动启动ng
+     angular.element(document).ready(function(){
+      angular.bootstrap(document,['app'])
+     });
+    
+    </script>
+</body>
+
+</html>

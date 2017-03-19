@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	.active{
+    		color: red;
+    	}
+    </style>
+</head>
+<!-- 
+
+angular-ui-router:
+一个路由模块
+ 
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+     <a ui-sref="home" ui-sref-active="active">home</a>
+  <a ui-sref="lists" ui-sref-active="active">lists</a>
+
+  	<!-- 路由视图容器 -->
+  	<div ui-view>
+  		404
+  	</div>
+    	<!-- <ui-view></ui-view> -->
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script>
+    var module = angular.module('app',['ui.router']);
+
+    module.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+    	// 定义默认路由
+    	$urlRouterProvider.otherwise('');
+
+    	// 路由规则
+    	$stateProvider
+    		.state('default',{
+	    		url:'',
+	    		template:'<div>home</div>'
+	    	})
+	    	.state('home',{
+	    		url:'/home',
+	    		// 定义路由指定模板
+	    		templateUrl:'./templates/1.html',
+	    		// 定义路由控制器
+	    		controller:['$scope','$state',function($scope,$state){
+	    			$scope.name='jmz';
+	    			// 路由跳转
+	    			// 逻辑判断跳转
+	    			$scope.go=function(url){
+	    				$state.go(url);
+	    			}
+
+	    			$scope.data=[
+	    				{name:'jmz',id:1},
+	    				{name:'jay',id:2}
+	    			]
+	    		}]
+	    	})
+	    	.state('lists',{
+	    		url:'/lists/{id}',
+	    		template:'<div><a >5656</a></div>',
+	    		controller:'myController'
+	    	})
+
+    	// var helloState={
+    	// 	name:'hello',
+    	// 	url:'/hello',
+    	// 	template:'<h1>hello</h1>'
+    	// }
+
+    	// var aboutState={
+    	// 	name:'about',
+    	// 	url:'/about',
+    	// 	template:'<h1>about</h1>'
+    	// }
+
+    	// $stateProvider.state(helloState);
+    	// $stateProvider.state(aboutState);
+    }]);
+
+
+    /**
+     * 服务
+     * $state: 跳转
+     * $stateParams：获取参数       
+     */
+    module.controller('myController',['$scope','$state',function($scope,$state){
+    	$scope.go=function(url){
+    		$state.go(url);
+    	}
+    }]);
+    
+    </script>
+</body>
+
+</html>

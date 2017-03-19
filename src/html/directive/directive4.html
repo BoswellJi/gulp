@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular directive</title>
+</head>
+<body>
+<!-- 
+	 ng-repeat:
+	 $index:
+	 $first:
+	 $last:
+	 $middle
+	 $even：偶数
+	 $odd: 基数
+
+	 ng-repeat="v in d track by $index"  将遍历是的唯一值指定为$index
+ -->
+	<div ng-app="app" ng-controller="app">
+		 <ul>
+		 	<li ng-repeat="(k,v) in data track by $index" style="{{$first?'color:red':'';}}">
+		 		{{v.name}}{{v.age}}
+		 		{{k}}
+		 	</li>
+		 </ul>
+
+		 <ul>
+		 	<li ng-repeat="v in d track by $index">
+		 		{{$index+'--'+v}}
+		 	</li>
+		 </ul>
+	</div>
+
+	<script src="../js/lib/angular.js"></script>
+	<script>
+		var myModule=angular.module('app',[]);
+		myModule.controller('app',['$scope',function($scope){
+			 $scope.data=[
+			 	{name:'jmz',age:24},
+			 	{name:'jmz',age:24},
+			 	{name:'jmz',age:24}
+			 ]
+
+			 $scope.d=[1,2,3,1]
+		}]);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular directive</title>
+</head>
+<body>
+<!-- 
+	ng-trim:文本框中是否去空格 true/false
+	ng-init:初始化变量
+ -->
+	<div ng-app="app" ng-controller="app" ng-init="age=24">
+		<form class="" action="" method="get">
+			姓名：<input type="text" name="name" ng-cloak ng-model="name" ng-trim="false" />
+			<button type="button" ng-click="handle()">按钮</button>
+		</form>
+		{{name}}{{age}}
+	</div>
+
+	<script src="../js/lib/angular.js"></script>
+	<script>
+		var myModule=angular.module('app',[]);
+		myModule.controller('app',['$scope',function($scope){
+			$scope.name="jmz";
+			$scope.handle=function(ev){
+				console.log(this.name.length);
+			}
+		}]);
+	</script>
+
+</body>
+</html>

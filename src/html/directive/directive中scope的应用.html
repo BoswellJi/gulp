@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+ 在同一个controller中，指令中的绑定数据同步控制器中的
+ 
+ scope:隔离作用域
+ true:  directive与controller属于父子级关系
+ false: directive继承controller，默认
+ {}： directive与controller没有关系，进行独立
+      template中的变量现在有scope中的变量控制着
+  
+  color:'@color':单向文本绑定
+
+  color:'=color':双向数据绑定,
+  控制器中的变量修改，改变指令中的变量值
+  指令中的变量修改，改变控制器当中的值
+
+  color:'&color':调用父级作用域中的方法
+
+  contoller:
+
+  link：DOM操作
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+    {{color}}<br />
+    <input type="text" ng-model="color">
+      <my-directive my-text="jmz" my-fn="fn()" my-color="color"></my-directive><br/>
+    
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+   
+    <script>
+    var module = angular.module('app', []);
+
+    module.directive('myDirective',[function(){
+      return {
+        restrict:'E',
+        // template:'{{fn()}}<input style="color:{{color}}" type="text" ng-model="color" />',
+        // replace:true,
+        templateUrl:'./templates/1.html',
+        scope:{
+          // color:'@myColor'
+          color:'=myColor',
+          fn:'&myFn'
+        },
+        // controller:['$scope',function($scope){
+        //   $scope.data=[
+        //     1,2,3
+        //   ]
+        // }],
+        link:function(scope,elem,attr){
+          console.log(elem,attr);
+          console.log(scope);
+          $(elem).html(attr['my-text']);
+        }
+      }
+    }]);
+
+    module.controller('myController',['$scope',function($scope){
+        $scope.color='red';
+        $scope.fn=function(){
+          return 'abac'
+        }
+    }]);
+
+    
+    
+    </script>
+</body>
+
+</html>
+
+
+

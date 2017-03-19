@@ -2,6 +2,7 @@
 
 ### 指令的作用
 - 为了拓展原生html的功能，提供更多，更丰富的功能
+- 为了封装出独立的公共组件
 
 ### angular内置指令
 - ng-model="str"          
@@ -30,23 +31,25 @@
 app.directive('tagName', function() {
             return {
                 restrict: "ECAM", //限制指令通过特定的方式来定义
-                template: '<h1>这是个自定义的指令</h1>'
+                template: '<h1>这是个自定义的指令</h1>',
                 templateUrl:'../index.html',
                 replace:true, //阻止指令之间的嵌套
                 link:function(){}  //在link函数中操作DOM
 
             };
 });
+
 四种使用方式：（也是内置指令的使用方式）
-<hello></hello>
-<div hello></div>
-<div class="hello"></div>
-<!-- directive:hello -->
+<tag-name></tag-name>
+<div tag-name></div>
+<div class="tag-name"></div>
+<!-- directive:tag-name -->
 <div></div>
 ```
 
 - 指令一定是可以在不同的controller中复用的
 - 所以需要给指令添加不同的配置项来与不同的controller中的scope进行交互
+
 
 ### 指令的运行原理
 - link

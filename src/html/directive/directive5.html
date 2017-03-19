@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular directive</title>
+</head>
+<body>
+<!-- 
+	  ng-selected:
+	  ng-disabled:
+	  ng-readonly:
+	  ng-model-options="{updateOn:'blur'}"  失去焦点后触发
+	  ng-list: 指定数组中每个元素中间的分割符
+	  ng-class:
+ -->
+	<div ng-app="app" ng-controller="app" >
+		  <select name="" id="" ng-model="data.sex">
+		  	<option value="">请选择</option>
+		  	<option   ng-value="1" ng-selected="data.sex==1" >男</option>
+		  	<option  ng-value="2" ng-selected="data.sex==2">女</option>
+		  </select>
+		  {{data.sex}}
+			全选：
+		  <input type="checkbox" ng-model="isChecked"  />
+		  <input type="checkbox"  ng-checked="isChecked" /><input type="checkbox"   ng-checked="isChecked" /><input type="checkbox"   ng-checked="isChecked" /><input type="checkbox" ng-checked="isChecked" /><input type="checkbox"   ng-checked="isChecked" /><input type="checkbox" ng-checked="isChecked" /><input type="checkbox"   ng-checked="isChecked" /><input type="checkbox"   ng-checked="isChecked" />
+
+		  <input type="text" ng-list="k" ng-model="text" ng-model-options="{updateOn:'blur'}">{{text}}
+	</div>
+
+
+
+	<script src="../js/lib/angular.js"></script>
+	<script>
+		var myModule=angular.module('app',[]);
+		myModule.controller('app',['$scope','$q',function($scope,$q){
+			 $scope.data={
+			 	sex:1
+			 }
+			 $scope.text=['jmz','jay']
+
+			 console.log($q);
+		}]);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+
+  -->
+
+<body>
+    <div ng-controller="con">
+        <ul >
+            <li ng-if="isshow" ng-repeat="v in data" class="silde">
+                {{v}}
+            </li>
+        </ul>
+        {{isshow}}
+        <input type="button" value="Toggle" ng-click="isshow=!isshow" />
+    </div>
+    <script src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+    <script>
+    var m = angular.module('app', ['ngAnimate']);
+
+    m.animation('.silde', [function() {
+      return {
+           enter: function(element, doneFn) {
+               jQuery(element).fadeIn(1000, doneFn);
+              
+          },
+          
+           move: function(element, doneFn) {
+               jQuery(element).fadeIn(1000, doneFn);
+              
+          },
+          
+           leave: function(element, doneFn) {
+               jQuery(element).fadeOut(1000, doneFn);
+              
+          }
+        }
+      }])
+
+    m.controller('con', ['$scope', function($scope) {
+        $scope.data = [
+            '1',
+            '2'
+        ]
+    }])
+    </script>
+</body>
+
+</html>

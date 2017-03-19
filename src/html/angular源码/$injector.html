@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+
+ 
+  -->
+
+<body>
+   <div ng-controller="myController">
+       
+    </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script>
+     var m=angular.module('app',[ ]);
+
+     m.factory('game',function(){
+      return {
+        name:'jmz'
+      }
+     });
+
+     /**
+      * $injector: 获取provider(服务)
+      * 进行依赖注入
+      */
+     m.controller('myController',['$scope','$injector',function($scope,$injector){
+      // 可以手动获取服务
+      $injector.invoke(function(game){
+        console.log(game.name);
+      });
+
+      // 分析函数签名方法
+      var params=$injector.annotate(function(arg1,arg2){});
+      console.log(params);
+     }]);
+
+
+     angular.element(document).ready(function(){
+      angular.bootstrap(document,['app']);
+     });
+     
+    
+    </script>
+</body>
+
+</html>

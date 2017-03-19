@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	.active{
+    		color: red;
+    	}
+    </style>
+</head>
+<!-- 
+
+angular-ui-router:
+一个路由模块
+ 
+  
+  -->
+
+<body>
+      
+    <div ui-view="top"></div>
+    <div ui-view="left"></div>
+    <div ui-view="right"></div>
+
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script>
+    var module = angular.module('app',['ui.router']);
+
+    module.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+
+      $urlRouterProvider.otherwise('/home');
+
+      $stateProvider
+        .state('/home',{
+          url:'/home',
+          views:{
+            top:{
+              templateUrl:'./templates/top.html'
+            },
+            left:{
+              templateUrl:'./templates/left.html'
+            },
+            right:{
+              templateUrl:'./templates/right.html'
+            }
+          }
+        })
+        .state('my',{
+          url:'/my/{id}',
+          views:{
+            top:{
+              templateUrl:'./templates/top.html'
+            },
+            left:{
+              templateUrl:'./templates/left.html'
+            },
+            right:{
+              templateUrl:'./templates/right.html'
+            }
+          }
+        })
+        .state('you',{
+          url:'/you',
+          views:{
+           top:{
+              templateUrl:'./templates/top.html'
+            },
+            left:{
+              templateUrl:'./templates/youLeft.html'
+            },
+            right:{
+              templateUrl:'./templates/youRight.html'
+            }
+          }
+        })
+
+    }]);
+
+   
+    
+    </script>
+</body>
+
+</html>

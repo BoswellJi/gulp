@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+</head>
+<!-- 
+  $scope: 数据
+  $scope.$watch: 监听
+  -->
+
+<body >
+<div ng-controller="allController">
+<input type="text" ng-model="title" />
+<input type="text" ng-model="obj.name" />
+ </div>
+
+
+
+   <script src="../js/lib/angular.js"></script>
+   <script>
+   
+
+   	var module=angular.module('app',[]);
+
+    
+   	module.controller('allController',['$scope',function($scope){
+   		$scope.title='jmz';
+
+   		$scope.obj={
+   			name:'jmz',
+   			age:24
+   		}
+
+   		$scope.$watch('obj.name',function(n,o){
+   			console.log(n,o);
+   		});
+
+   		$scope.$watch('title',function(news , old){
+   			console.log(news,old);
+   		});
+   	}]);
+
+    
+   </script>
+</body>
+
+</html>

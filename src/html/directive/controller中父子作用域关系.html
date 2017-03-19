@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!-- 
+   基本类型变量时：子级继承父级，但隔离
+   引用类型变量时：子级继承父级并且不隔离；一直使用父级的引用
+   ng-model="name":当controller中没有$scope.name='xxx'时候，系统会自动隐式添加这个定义
+  
+  -->
+
+<body>
+   <div ng-controller="myController">
+    
+      <!-- {{data.name}} -->
+      {{name}}
+      <div ng-controller="subController">
+      <input type="text" ng-model="name" />
+        <!-- {{data.name}} -->
+        {{name}}
+      </div>
+   </div>
+    <script src="../../bower_components/angular/angular.js"></script>
+   
+    <script>
+    var module = angular.module('app', []);
+
+    module.controller('myController',['$scope',function($scope){
+       // $scope.data={name:'jmz'};
+        // $scope.name='jmz';
+    }]);
+
+    //如果子级控制器中使用的是父级的变量，会被父级更改而更改
+    module.controller('subController',['$scope',function($scope){
+      // $scope.data={name:"jmz"};
+        $scope.name='jmz';
+    }]);
+    
+    </script>
+</body>
+
+</html>
+
+
+

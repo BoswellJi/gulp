@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	.ace_editor { height: 200px; }
+    </style>
+</head>
+<!-- 
+
+  -->
+
+<body>
+   <div ui-ace="{
+  useWrapMode : true,
+  showGutter: false,
+  theme:'twilight',
+  mode: 'xml',
+  firstLineNumber: 5,
+  onLoad: aceLoaded,
+  onChange: aceChanged
+}"></div>
+
+    <script src="../../bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../../bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script>
+    var module = angular.module('app',['ui.ace']);
+
+   
+    
+    </script>
+</body>
+
+</html>

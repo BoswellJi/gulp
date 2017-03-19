@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular 单选按钮 </title>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	
+	<div ng-app="app" ng-controller="app1">
+	游戏：<input type="checkbox" ng-model="data.game" ng-true-value="0" ng-false-value="1" />
+	电影：<input type="checkbox" ng-model="data.film" ng-true-value="0" ng-false-value="1" />
+	{{data}}
+	</div>
+	<script src="../js/lib/angular.js"></script>
+    <script >
+    var M=angular.module('app',[]);
+    M.controller('app1',['$scope',function($scope){
+    	$scope.data={game:1,film:1}
+    }]);
+    	
+    </script>
+</body>
+</html>
