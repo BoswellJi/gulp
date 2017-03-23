@@ -1,4 +1,4 @@
-##gulp 工程构建系统
+## gulp 工程构建系统
 
 - 注意点：
 
@@ -25,5 +25,12 @@ presets: ['es2015','stage-0']
 
 - 判断js语法错误
 > jshint是用来检测javascript的语法错误的
+
+
+## gulp+angularjs的前端工程解决方案
+
+1. 目录搭建
+- 按模块划分（login,order）
+- 按功能划分（controller,directive,views...）
 
 
