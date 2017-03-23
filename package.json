@@ -4,16 +4,24 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --watch --progress --color --config webpack.config.js",
-    "start": "webpack-dev-server --devtool eval --progress --colors --hot --content-base dist",
-    "other": "webpack --watch --progress --color --config webpack.config.dist.js"
+    "build": "webpack  --progress --color --config webpack.config.js",
+    "start": "webpack-dev-server --devtool eval-source-map --progress --colors --hot --inline --content-base ./"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-
+    "css-loader": "^0.27.3",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "open-browser-webpack-plugin": "^0.0.5",
+    "style-loader": "^0.16.0",
+    "webpack": "^2.3.1",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
-
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3",
+    "angular-touch": "^1.6.3",
+    "angular-ui-router": "^0.4.2"
   }
 }

@@ -12,3 +12,19 @@ angular.fromJson('{}')
 ```
 1. search()  获取url中的查询字符串对象
 ```
+
+
+### npm中的模块
+```
+angular 					angular
+angular-ui-router 			angular-ui-router
+angular-route 				angular-route
+angular-touch				angular-touch
+
+```
+
+
+### webpack中使用的loader
+```
+html-loader
+```
