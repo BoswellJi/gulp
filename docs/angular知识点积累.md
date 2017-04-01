@@ -8,9 +8,24 @@ angular.fromJson('{}')
     
 ``` 
 
-### $location
+### $location 地址对象
 ```
 1. search()  获取url中的查询字符串对象
+```
+
+### $event 事件对象
+```
+ng-click="fn($event)"
+
+$scope.fn=function($event){
+	
+}
+```
+
+### angular.element
+```
+获取dom元素 LQuery
+angular.element('.a')
 ```
 
 
